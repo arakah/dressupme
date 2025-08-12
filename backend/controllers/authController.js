@@ -10,25 +10,42 @@ const generateToken = (user) => {
 
 export const signup = async (req, res) => {
   const { username, email, password } = req.body;
-  if (!username || !email || !password) return res.status(400).json({ message: 'Required fields missing' });
+  if (!username || !email || !password) {
+    return res.status(400).json({ message: 'Required fields missing' });
+  }
 
   try {
     const hashed = await bcrypt.hash(password, 10);
-    await db.query('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, hashed]);
+
+    await db.query(
+      'INSERT INTO users (username, email, password) VALUES ($1, $2, $3)',
+      [username, email, hashed]
+    );
+
     res.status(201).json({ message: 'Signup successful' });
-  } catch {
+  } catch (err) {
+    console.error('Signup error:', err.message);
     res.status(500).json({ message: 'Email might already be in use' });
   }
 };
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
-  const [rows] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
-  if (rows.length === 0) return res.status(401).json({ message: 'Invalid credentials' });
 
-  const user = rows[0];
+  const result = await db.query(
+    'SELECT * FROM users WHERE email = $1',
+    [email]
+  );
+
+  if (result.rows.length === 0) {
+    return res.status(401).json({ message: 'Invalid credentials' });
+  }
+
+  const user = result.rows[0];
   const match = await bcrypt.compare(password, user.password);
-  if (!match) return res.status(401).json({ message: 'Invalid credentials' });
+  if (!match) {
+    return res.status(401).json({ message: 'Invalid credentials' });
+  }
 
   const token = generateToken(user);
   res.json({ token });
@@ -40,20 +57,20 @@ export const logout = (req, res) => {
 
 export const getProfile = async (req, res) => {
   try {
-    // Middleware authenticateToken sudah menaruh data user di `req.user`
-    const userId = req.user.id; 
+    const userId = req.user.id;
 
-    // Ambil data user dari DB, tapi JANGAN sertakan password
-    const [rows] = await db.query('SELECT id, username, email FROM users WHERE id = ?', [userId]);
+    const result = await db.query(
+      'SELECT id, username, email FROM users WHERE id = $1',
+      [userId]
+    );
 
-    if (rows.length === 0) {
+    if (result.rows.length === 0) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    const user = rows[0];
-    res.json(user);
-
+    res.json(result.rows[0]);
   } catch (error) {
+    console.error('Get profile error:', error.message);
     res.status(500).json({ message: 'Server error' });
   }
 };
