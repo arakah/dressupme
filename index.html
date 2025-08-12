@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>DressUp Me</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <div class="logo">DressUp Me</div>
+    <ul>
+      <a href="#home">Beranda</a>
+      <a href="#about">Tentang Kami</a>
+      <a href="#demo">Demo</a>
+      <a href="#" id="open-signup">Masuk Akun</a>
+    </ul>
+  </nav>
+
+  
+<!-- beranda -->
+<section id="home" class="home">
+  <div class="home-container d-flex align-items-center justify-content-center flex-wrap">
+    <!-- Gambar di kiri -->
+    <div class="home-images">
+      <img class="img-home" src="asset/home1.png" alt="dress">
+      <img class="img-home" src="asset/home2.png" alt="dress">
+      <img class="img-home" src="asset/home3.png" alt="dress">
+    </div>
+    
+    <!-- Judul dan paragraf di kanan -->
+    <div class="home-content ms-4">
+      <h1>Temukan Gaya Terbaikmu dengan DressUp Me!</h1>
+      <p>
+        Tunjukkan kreativitasmu dan ekspresikan gaya fashion-mu seperti belum pernah sebelumnya.
+        DressUp Me membantumu memadupadankan outfit yang sesuai dengan kepribadian unikmu.
+        Dari lemari virtual hingga fitur styling interaktif — semua tersedia untuk membuat harimu lebih stylish.
+      </p>
+      <br>
+      <h3>
+        Mulailah perjalanan fashion-mu sekarang!
+      </h3>
+    </div>
+
+  <!-- Gambar di kanan -->
+  <div class="home-images2">
+    <img class="img-home2" src="asset/home4.png" alt="dress">
+    <img class="img-home2" src="asset/home5.png" alt="dress">
+    <img class="img-home2" src="asset/home6.png" alt="dress">
+  </div>
+  </div>
+</section>
+
+<!-- tentang kami -->
+<section id="about" class="about">
+  <div class="about-container d-flex align-items-center justify-content-center flex-wrap">
+    <!-- Judul dan paragraf di kiri -->
+    <div class="about-content me-4 text-end">
+      <h2>Tentang DressUp Me</h2>
+      <p>
+        DressUp Me adalah platform fashion berbasis web yang hadir untuk membantu kamu mengekspresikan gaya dan kepribadian melalui padupadan outfit yang kreatif. 
+        Kami percaya bahwa setiap orang memiliki selera fashion yang unik, dan dengan teknologi yang tepat, siapa pun bisa tampil percaya diri setiap hari. 
+      </p>
+      <br>
+      <p>
+        Melalui fitur lemari virtual, mix & match interaktif, serta antarmuka yang simpel dan menyenangkan, kami ingin menjadikan pengalaman berpakaian sebagai sesuatu yang seru dan inspiratif. 
+        DressUp Me dibuat untuk semua kalangan, dari remaja hingga dewasa, yang ingin mengeksplorasi gaya personal tanpa batas. 
+        Mari bergaya dengan cara yang menyenangkan — bersama DressUp Me!
+      </p>
+    </div>
+    <!-- Gambar di kanan -->
+    <div class="about-images">
+      <img class="img-about" src="asset/bajubg.png" alt="dress">
+      <img class="img-about" src="asset/celanabg.png" alt="dress">
+    </div>
+</section>
+
+
+<!-- Demo -->
+<section id="demo" class="demo">
+  <div class="demo-container">
+    <div class="main-layout"> <!-- Tambahkan wrapper ini -->
+    
+      <!-- BAGIAN KIRI: Judul + Tabel -->
+      <div class="demo-main">
+        <h2 class="demo-title">Coba Buat Koleksi dari Katalog Kami!</h2>
+
+        <div class="outfit-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Atasan</th>
+                <th>Bawahan</th>
+                <th>Sepatu</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><img src="asset/baju1-removebg-preview.png" class="item" data-category="top"></td>
+                <td><img src="asset/celana1-removebg-preview.png" class="item" data-category="bottom"></td>
+                <td><img src="asset/sepatu1-removebg-preview.png" class="item" data-category="shoes"></td>
+              </tr>
+              <tr>
+                <td><img src="asset/baju2-removebg-preview.png" class="item" data-category="top"></td>
+                <td><img src="asset/rok1-removebg-preview.png" class="item" data-category="bottom"></td>
+                <td><img src="asset/sepatu2-removebg-preview.png" class="item" data-category="shoes"></td>
+              </tr>
+              <tr>
+                <td><img src="asset/baju3-removebg-preview.png" class="item" data-category="top"></td>
+                <td><img src="asset/rok2-removebg-preview.png" class="item" data-category="bottom"></td>
+                <td><img src="asset/sepatu3-removebg-preview.png" class="item" data-category="shoes"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- BAGIAN KANAN: Panel -->
+      <div class="selection-panel">
+        <div class="selection">
+          <div class="slot" id="top-slot">Pilih Atasan</div>
+        </div>
+        <div class="selection">
+          <div class="slot" id="bottom-slot">Pilih Bawahan</div>
+        </div>
+        <div class="selection">
+          <div class="slot" id="shoes-slot">Pilih Sepatu</div>
+        </div>
+        <!-- Tombol Save -->
+        <button id="saveBtn">Simpan Pakaian</button>
+      </div>
+
+    </div> 
+  </div>
+</section>
+
+
+<!-- Sign Up Modal -->
+<div id="signup-modal" class="modal">
+  <div class="modal-content">
+    <span id="close-signup" class="close">&times;</span>
+
+    <!-- Sign Up Form -->
+    <form id="signup-form">
+      <h2>Sign Up</h2>
+      <label>Nama: <input type="text" name="username" placeholder="Nama" required></label>
+      <label>Email: <input type="email" name="email" placeholder="@email.com" required></label>
+      <label>Kata Sandi: 
+        <input type="password" id="password" name="password" placeholder="Kata Sandi" required>
+        <span id="toggle-password" style="cursor:pointer;">👁️</span>
+      </label>
+      <button type="submit">Buat Akun</button>
+      <p>Sudah memiliki Akun? <a href="#" id="switch-to-signin">Masuk Akun</a></p>
+    </form>
+
+    <!-- Log In Form -->
+    <form id="signin-form" style="display: none;">
+      <h2>Masuk Akun</h2>
+      <label>Email: <input type="email" name="email" required placeholder="@email.com"></label>
+      <label>Kata Sandi: 
+        <input type="password" name="password" placeholder="Kata Sandi" required>
+        <span id="toggle-password" style="cursor:pointer;">👁️</span>
+      </label>
+      <button type="submit">Masuk Akun</button>
+      <p>Delum memiliki Akun? <a href="#" id="switch-to-signup">Buat Akun</a></p>
+    </form>
+  </div>
+</div>
+
+
+
+<!-- Footer -->
+  <footer>
+    © 2025 DressUp Me | Hak Cipta Dilindungi
+  </footer>
+
+<script src="script.js"></script>
+
+
+</body>
+</html>

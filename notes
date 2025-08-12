@@ -1,0 +1,31 @@
+================================================== 
+INSTRUKSI SETUP PROYEK DRESSUP ME
+================================================== 
+
+LANGKAH 1: PERSIAPAN AWAL
+Pastikan kamu sudah menginstal Node.js di komputermu.
+Pastikan kamu sudah menginstal XAMPP untuk database MySQL.
+
+LANGKAH 2: SETUP DATABASE (MySQL)
+Buka XAMPP Control Panel, lalu klik "Start" pada modul Apache dan MySQL.
+
+LANGKAH 3: SETUP BACKEND
+Konfigurasi File .env (SANGAT PENTING)
+Ganti nilainya dengan konfigurasi database dan kredensial Cloudinary kamu sendiri.
+
+* Instalasi Library & Menjalankan Server *
+
+Buka Terminal atau Command Prompt dalam vscode.
+cd backend
+npm install (perintah ini hanya sekali untuk mengunduh semua library)
+npm start
+Jika berhasil, akan muncul pesan "Server is running on http://localhost:5000".
+
+Jikalau error saat menjalankan npm install atau npm start, jalankan perintah ini:
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+lalu lanjutkan dengan perintah npm start
+
+LANGKAH 4: MENJALANKAN & MENGHENTIKAN
+Untuk Menjalankan: Pastikan XAMPP sudah jalan, lalu jalankan npm start di dalam folder backend.
+Untuk Mengakses Aplikasi: Buka file index.html yang ada di folder utama proyek melalui browser.
+Untuk Menghentikan Server: Kembali ke terminal tempat npm start berjalan, lalu tekan tombol Ctrl + C.
