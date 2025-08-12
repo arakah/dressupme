@@ -18,7 +18,10 @@ const passwordFieldSignin = signinForm.querySelector("input[name='password']");
 // =================================================================
 // PENGATURAN API
 // =================================================================
-const API_BASE_URL = 'http://localhost:5000'; // Pastikan port ini sesuai
+const API_BASE_URL =
+  window.location.hostname === 'localhost'
+    ? 'http://localhost:5000'
+    : 'https://dressupme-backend.vercel.app';
 
 // =================================================================
 // FUNGSI OTENTIKASI

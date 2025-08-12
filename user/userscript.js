@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const API_BASE_URL = 'http://localhost:5000';
+  const API_BASE_URL =
+    window.location.hostname === 'localhost'
+      ? 'http://localhost:5000'
+      : 'https://dressupme-backend.vercel.app';
   const token = localStorage.getItem('authToken');
 
   let wardrobe = { top: [], bottom: [], shoes: [] };
